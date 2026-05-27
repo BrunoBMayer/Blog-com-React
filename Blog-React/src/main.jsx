@@ -1,10 +1,34 @@
-import { StrictMode } from 'react'
+import { Children, StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+//Págimas 
+import Home from "./routes/Home.jsx";
+import NewPost from "./routes/NewPost.jsx"; 
+
+const router = createBrowserRouter([
+  {
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/new",
+        element: <NewPost />,
+      },
+    ],
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <RouterProvider router={router} /> {/* Ativa o React Router na aplicação. (“React Router, use esse objeto router para decidir qual página/componente deve aparecer de acordo com a URL.”) */}
+  </StrictMode>
+);
+
+
