@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"; // useState guarda os posts / useEffect executa algo quando a página carrega
 import { Link } from "react-router-dom"; // Link cria navegação entre páginas sem recarregar o site
-import axios from "axios"; // Axios faz requisições para APIs
+import blogFetch from "../axios/config"; // Axios faz requisições para APIs
 import "./Home.css";
 
 const Home = () => {
@@ -8,8 +8,8 @@ const Home = () => {
 
   const getPosts = async () => { // Função assíncrona para buscar os posts na API
     try {
-      const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts"
+      const response = await blogFetch.get(
+        "/posts"
       ); // Faz uma requisição GET para pegar os posts
 
       const data = response.data; // No Axios, os dados da resposta ficam em response.data
