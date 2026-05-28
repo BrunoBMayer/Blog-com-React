@@ -45,7 +45,7 @@ const deletePost = async (id) => {
             <h2>{post.title}</h2> {/* Mostra o título do post */}
 
             <div className="actions"> {/* Área dos botões de ação do post */}
-              <Link className="btn edit-btn">Editar</Link> {/* Botão/link para editar o post */}
+              <Link className="btn edit-btn" to={`/posts/edit/${post.id}`}>Editar</Link> {/* Botão/link para editar o post */}
               <button className="btn delete-btn" onClick={() => deletePost(post.id)}>Excluir</button> {/* Botão para excluir o post */}
             </div>
           </div>
