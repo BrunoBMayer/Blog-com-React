@@ -18,6 +18,15 @@ const Admin = () => {
     }
   };
 
+const deletePost = async (id) => {
+  await blogFetch.delete(`/posts/${id}`); // envia uma requisição DELETE para excluir o post na API
+
+  const filteredPosts = posts.filter((post) => post.id !== id); // cria uma nova lista sem o post excluído
+
+  setPosts(filteredPosts); // atualiza o estado e remove o post da tela
+};
+
+
   useEffect(() => {
     getPosts(); // Chama a função quando a página Admin carregar
   }, []);
@@ -37,7 +46,7 @@ const Admin = () => {
 
             <div className="actions"> {/* Área dos botões de ação do post */}
               <Link className="btn edit-btn">Editar</Link> {/* Botão/link para editar o post */}
-              <button className="btn delete-btn">Excluir</button> {/* Botão para excluir o post */}
+              <button className="btn delete-btn" onClick={() => deletePost(post.id)}>Excluir</button> {/* Botão para excluir o post */}
             </div>
           </div>
         ))
