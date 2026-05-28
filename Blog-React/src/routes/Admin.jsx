@@ -1,0 +1,49 @@
+import { useState, useEffect } from "react";
+import blogFetch from "../axios/config";
+import { Link } from "react-router-dom";
+import "./Admin.css";
+
+const Admin = () => {
+  const [posts, setPosts] = useState([]); // Estado que guarda a lista de posts da API
+
+  const getPosts = async () => {
+    try {
+      const response = await blogFetch.get("/posts"); // Busca todos os posts da API
+
+      const data = response.data; // Pega os dados retornados pela API
+
+      setPosts(data); // Salva os posts no estado
+    } catch (error) {
+      console.log(error); // Mostra o erro no console caso a requisição falhe
+    }
+  };
+
+  useEffect(() => {
+    getPosts(); // Chama a função quando a página Admin carregar
+  }, []);
+
+  return (
+    <div className="admin"> {/* Container principal da página de administração */}
+      <h1>Gerenciar Posts</h1>
+
+      {/* Se a lista de posts ainda estiver vazia, mostra "Carregando...".
+          Quando os posts chegarem, renderiza a lista com map */}
+      {posts.length === 0 ? (
+        <p>Carregando...</p>
+      ) : (
+        posts.map((post) => ( // Percorre a lista de posts e cria um bloco para cada post
+          <div className="post" key={post.id}> {/* key ajuda o React a identificar cada post da lista */}
+            <h2>{post.title}</h2> {/* Mostra o título do post */}
+
+            <div className="actions"> {/* Área dos botões de ação do post */}
+              <Link className="btn edit-btn">Editar</Link> {/* Botão/link para editar o post */}
+              <button className="btn delete-btn">Excluir</button> {/* Botão para excluir o post */}
+            </div>
+          </div>
+        ))
+      )}
+    </div>
+  );
+};
+
+export default Admin;
