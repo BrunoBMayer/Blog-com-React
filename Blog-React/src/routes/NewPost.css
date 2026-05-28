@@ -1,0 +1,27 @@
+.new-post h2 {
+    text-align: center; 
+    margin-bottom: 1rem; /* espaço fora do elemento */
+}
+
+form {
+    max-width: 500px; 
+    width: 100%; 
+    margin: 0 auto; /* centraliza o formulário horizontalmente */
+}
+
+.form-control {
+  display: flex; /* faz a div controlar o alinhamento dos elementos dentro dela */
+  flex-direction: column; /* coloca label e input/textarea um embaixo do outro */
+  margin-bottom: 1rem;
+}
+
+.form-control label {
+    margin-bottom: 0.5rem; 
+}
+
+.form-control input, 
+.form-control textarea {
+    padding: .5rem; /* adiciona espaço interno nos campos */
+    border-radius: 5px; 
+    border: none; 
+}
