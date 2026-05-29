@@ -10,6 +10,33 @@ const EditPost = () => {
     const [body, setBody] = useState(); 
     const { id } = useParams(); 
 
+      const getPost = async () => { // função assíncrona para buscar um post específico na API
+    try {
+
+      const response = await blogFetch.get(`/posts/${id}`); // faz GET em /posts/id usando o id da URL
+      const data = response.data; // pega os dados retornados pela API
+      setTitle(data.title); // salva o post recebido no estado
+      setBody(data.body); 
+
+    } catch (error) {
+      console.log(error); // mostra erro no console se a requisição falhar
+    }
+  };
+    const editPost = async(e) => {
+      e.preventDefault(); 
+
+      const post = {title, body, userId: 1}; 
+
+      await blogFetch.put(`/post/${id}`, {
+        body: post,
+      });
+    };
+
+
+    useEffect(() =>{
+      getPost(); 
+    })
+
   return (
         <div className="new-post"> {/* Container principal da página de criação de post */}
       <h2>Editando: {title}</h2>
@@ -23,6 +50,7 @@ const EditPost = () => {
             id="title"
             placeholder="Digite o título"
             onChange={(e) => setTitle(e.target.value)} // atualiza o estado title com o valor digitado
+            value={title || ""}
           />
         </div>
 
@@ -33,6 +61,7 @@ const EditPost = () => {
             id="body"
             placeholder="Digite o conteúdo"
             onChange={(e) => setBody(e.target.value)} // atualiza o estado body com o valor digitado
+            value={body || ""}
           ></textarea>
         </div>
 
