@@ -38,3 +38,23 @@
     color: #fff; /* muda a cor do texto ao passar o mouse */
     background-color: #0e1217; /* muda o fundo do botão ao passar o mouse */
 }
+
+.search-container {
+    margin: 2rem 0; 
+    display: flex;
+    justify-content: center;
+}
+
+.search-container input {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc; 
+    border-radius: 8px;
+    font-size: 1rem; 
+    outline: none; 
+}
+
+.search-container input:focus {
+    border-color: #646cff;
+}
