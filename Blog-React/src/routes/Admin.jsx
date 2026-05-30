@@ -5,6 +5,7 @@ import "./Admin.css";
 
 const Admin = () => {
   const [posts, setPosts] = useState([]); // Estado que guarda a lista de posts da API
+  const [message, setMessage] = useState(""); // Guarda o texto da mensagem de sucesso
 
   const getPosts = async () => {
     try {
@@ -18,22 +19,31 @@ const Admin = () => {
     }
   };
 
-const deletePost = async (id) => {
-  const confirmDelete = window.confirm(  // confirmação antes d excluir
-    "Tem certeza que deseja excluir este post?"
-  ); 
+  const deletePost = async (id) => {
+    const confirmDelete = window.confirm( // Confirmação antes de excluir
+      "Tem certeza que deseja excluir este post?"
+    );
 
-  if (!confirmDelete){
-    return;
-  }
+    if (!confirmDelete) {
+      return;
+    }
 
-  await blogFetch.delete(`/posts/${id}`); // envia uma requisição DELETE para excluir o post na API
+    try {
+      await blogFetch.delete(`/posts/${id}`); // Envia uma requisição DELETE para excluir o post na API
 
-  const filteredPosts = posts.filter((post) => post.id !== id); // cria uma nova lista sem o post excluído
+      const filteredPosts = posts.filter((post) => post.id !== id); // Cria uma nova lista sem o post excluído
 
-  setPosts(filteredPosts); // atualiza o estado e remove o post da tela
-};
+      setPosts(filteredPosts); // Atualiza o estado e remove o post da tela
 
+      setMessage("Post excluído com sucesso!"); // Mostra mensagem de sucesso
+
+      setTimeout(() => {
+        setMessage(""); // Limpa a mensagem depois de 3 segundos
+      }, 5000);
+    } catch (error) {
+      console.log(error); // Mostra o erro no console caso a exclusão falhe
+    }
+  };
 
   useEffect(() => {
     getPosts(); // Chama a função quando a página Admin carregar
@@ -42,6 +52,8 @@ const deletePost = async (id) => {
   return (
     <div className="admin"> {/* Container principal da página de administração */}
       <h1>Gerenciar Posts</h1>
+
+      {message && <p className="success-message">{message}</p>}
 
       {/* Se a lista de posts ainda estiver vazia, mostra "Carregando...".
           Quando os posts chegarem, renderiza a lista com map */}
@@ -53,8 +65,16 @@ const deletePost = async (id) => {
             <h2>{post.title}</h2> {/* Mostra o título do post */}
 
             <div className="actions"> {/* Área dos botões de ação do post */}
-              <Link className="btn edit-btn" to={`/posts/edit/${post.id}`}>Editar</Link> {/* Botão/link para editar o post */}
-              <button className="btn delete-btn" onClick={() => deletePost(post.id)}>Excluir</button> {/* Botão para excluir o post */}
+              <Link className="btn edit-btn" to={`/posts/edit/${post.id}`}>
+                Editar
+              </Link>
+
+              <button
+                className="btn delete-btn"
+                onClick={() => deletePost(post.id)}
+              >
+                Excluir
+              </button>
             </div>
           </div>
         ))
