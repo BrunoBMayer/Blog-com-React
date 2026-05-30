@@ -1,4 +1,4 @@
-import { Children, StrictMode } from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
@@ -11,6 +11,7 @@ import NewPost from "./routes/NewPost.jsx";
 import Post from "./routes/Post.jsx"
 import Admin from "./routes/Admin.jsx"
 import EditPost from './routes/EditPost.jsx';
+import NotFound from './routes/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/posts/edit/:id",
         element: <EditPost />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
