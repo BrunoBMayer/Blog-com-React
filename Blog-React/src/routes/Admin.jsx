@@ -19,6 +19,14 @@ const Admin = () => {
   };
 
 const deletePost = async (id) => {
+  const confirmDelete = window.confirm(  // confirmação antes d excluir
+    "Tem certeza que deseja excluir este post?"
+  ); 
+
+  if (!confirmDelete){
+    return;
+  }
+
   await blogFetch.delete(`/posts/${id}`); // envia uma requisição DELETE para excluir o post na API
 
   const filteredPosts = posts.filter((post) => post.id !== id); // cria uma nova lista sem o post excluído
