@@ -33,7 +33,7 @@ const Home = () => {
       {posts.length === 0 ? (
         <p>Carregando...</p>
       ) : (
-        posts.map((post) => ( // Percorre o array de posts e cria um bloco para cada post
+        posts.slice(0, 10).map((post) => ( // Percorre o array de posts e cria um bloco para cada post (limitando aos 10 primeiros (slice pega uma parte do array))
           <div className="post" key={post.id}> {/* key ajuda o React a identificar cada item da lista */}
             <h2>{post.title}</h2>
             <p>{post.body}</p>
