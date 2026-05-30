@@ -6,8 +6,8 @@ import "./EditPost.css";
 const EditPost = () => {
 
     const navigate = useNavigate(); 
-    const [title, setTitle] = useState(); 
-    const [body, setBody] = useState(); 
+    const [title, setTitle] = useState(""); 
+    const [body, setBody] = useState(""); 
     const { id } = useParams(); 
 
       const getPost = async () => { // função assíncrona para buscar um post específico na API
@@ -24,6 +24,11 @@ const EditPost = () => {
   };
     const editPost = async(e) => {
       e.preventDefault(); 
+
+      if(!title.trim() || !body.trim()){
+        alert("Preencha o título e o conteúdo do post.");
+        return; 
+      }
 
       const post = {title, body, userId: 1}; 
 

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // permite redirecionar o usuário pelo código
 
 /* onChange executa uma função toda vez que o usuário altera/digita em um campo. */
-/* e significa event, ou seja, o evento que aconteceu. */
+/* e significa event, ou seja, o evento que aconteceu.  */
 
 const NewPost = () => {
   const navigate = useNavigate(); // cria a função usada para navegar/redirecionar entre rotas
@@ -14,6 +14,11 @@ const NewPost = () => {
 
   const createPost = async (e) => {
     e.preventDefault(); // impede o reload da página, pois o envio será controlado pelo React
+
+    if (!title.trim() || !body.trim()){ // trim() impede que o usuário burle a validação digitando só espaços.
+      alert("Preencha o título e o conteúdo do post.");
+      return;
+    }
 
     const post = { title, body, userId: 1 }; // cria um objeto com os dados digitados no formulário
 
