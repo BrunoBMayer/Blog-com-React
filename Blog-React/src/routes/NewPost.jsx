@@ -1,63 +1,74 @@
-import "./NewPost.css"; 
-import blogFetch from "../axios/config"; // importa a configuração personalizada do Axios
-import React, { useState } from "react"; 
-import { useNavigate } from "react-router-dom"; // permite redirecionar o usuário pelo código
-
-/* onChange executa uma função toda vez que o usuário altera/digita em um campo. */
-/* e significa event, ou seja, o evento que aconteceu.  */
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import blogFetch from "../axios/config";
+import "./NewPost.css";
 
 const NewPost = () => {
-  const navigate = useNavigate(); // cria a função usada para navegar/redirecionar entre rotas
+  const navigate = useNavigate();
 
-  const [title, setTitle] = useState(""); // estado que guarda o título digitado
-  const [body, setBody] = useState(""); // estado que guarda o conteúdo digitado
+  const [title, setTitle] = useState(""); // Guarda o título do post
+  const [body, setBody] = useState(""); // Guarda o conteúdo do post
+  const [imageUrl, setImageUrl] = useState(""); // Guarda a URL da imagem do post
 
   const createPost = async (e) => {
-    e.preventDefault(); // impede o reload da página, pois o envio será controlado pelo React
+    e.preventDefault(); // Evita o recarregamento da página ao enviar o formulário
 
-    if (!title.trim() || !body.trim()){ // trim() impede que o usuário burle a validação digitando só espaços.
-      alert("Preencha o título e o conteúdo do post.");
-      return;
+    const post = {
+      title,
+      body,
+      imageUrl,
+    };
+
+    try {
+      await blogFetch.post("/posts", post); // Envia o novo post para o JSON Server
+
+      navigate("/"); // Redireciona para a Home depois de criar o post
+    } catch (error) {
+      console.log(error);
     }
-
-    const post = { title, body, userId: 1 }; // cria um objeto com os dados digitados no formulário
-
-    await blogFetch.post("/posts", post); // envia esse objeto para a API usando o método POST
-
-    navigate("/"); // redireciona o usuário para a Home depois do envio
   };
 
   return (
-    <div className="new-post"> {/* Container principal da página de criação de post */}
-      <h2>Inserir novo Post:</h2>
+    <div className="new-post">
+      <h1>Criar novo post</h1>
 
-      <form onSubmit={(e) => createPost(e)}> {/* ao enviar o formulário, chama a função createPost */}
-        <div className="form-control"> {/* Agrupa label + input para facilitar a estilização */}
-          <label htmlFor="title">Título:</label> {/* htmlFor conecta o label ao input com id="title" */}
+      <form onSubmit={createPost}>
+        <div className="form-control">
+          <label htmlFor="title">Título:</label>
           <input
             type="text"
             name="title"
             id="title"
             placeholder="Digite o título"
-            onChange={(e) => setTitle(e.target.value)} // atualiza o estado title com o valor digitado
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </div>
 
         <div className="form-control">
-          <label htmlFor="body">Conteúdo:</label> {/* Conecta o label ao textarea com id="body" */}
+          <label htmlFor="body">Conteúdo:</label>
           <textarea
             name="body"
             id="body"
             placeholder="Digite o conteúdo"
-            onChange={(e) => setBody(e.target.value)} // atualiza o estado body com o valor digitado
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
           ></textarea>
         </div>
 
-        <input 
-          type="submit" 
-          value="Criar Post" 
-          className="btn" 
-        /> {/* Botão que envia o formulário */}
+        <div className="form-control">
+          <label htmlFor="imageUrl">URL da imagem:</label>
+          <input
+            type="url"
+            name="imageUrl"
+            id="imageUrl"
+            placeholder="Cole a URL da imagem"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+        </div>
+
+        <input type="submit" value="Criar Post" className="btn" />
       </form>
     </div>
   );

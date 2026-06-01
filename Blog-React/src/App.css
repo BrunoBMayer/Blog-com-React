@@ -19,3 +19,13 @@
 
   flex: 1; /* Faz o conteúdo ocupar o espaço disponível e empurra o footer para baixo */
 }
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+
+  margin: 2rem auto;
+  padding: 0 2rem;
+
+  flex: 1;
+}

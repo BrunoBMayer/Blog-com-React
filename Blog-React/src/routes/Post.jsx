@@ -49,6 +49,10 @@ const Post = () => {
 
       <p className="post-meta">Publicado no Blog React</p>
 
+      {post.imageUrl && (
+        <img src={post.imageUrl} alt={post.title} className="post-detail-image" />
+      )}
+
       <div className="post-content">
         <p>{post.body}</p>
       </div>

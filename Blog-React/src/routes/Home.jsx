@@ -54,8 +54,13 @@ const filteredPosts = posts
     ) : filteredPosts.length === 0 ? (
       <p>Nenhum post encontrado.</p>
     ) : (
-      filteredPosts.map((post) => (
+    <div className="posts-grid">
+      {filteredPosts.map((post) => (
         <div className="post" key={post.id}>
+          {post.imageUrl && (
+            <img src={post.imageUrl} alt={post.title} className="post-image" />
+          )}
+
           <h2>{post.title}</h2>
           <p>{post.body}</p>
 
@@ -63,7 +68,8 @@ const filteredPosts = posts
             Ler mais
           </Link>
         </div>
-      ))
+      ))}
+    </div>
     )}
     </div>
   );
