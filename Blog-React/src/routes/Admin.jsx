@@ -20,9 +20,9 @@ const Admin = () => {
   };
 
   const deletePost = async (id) => {
-    const confirmDelete = window.confirm( // Confirmação antes de excluir
+    const confirmDelete = window.confirm(
       "Tem certeza que deseja excluir este post?"
-    );
+    ); // Confirmação antes de excluir
 
     if (!confirmDelete) {
       return;
@@ -31,14 +31,16 @@ const Admin = () => {
     try {
       await blogFetch.delete(`/posts/${id}`); // Envia uma requisição DELETE para excluir o post na API
 
-      const filteredPosts = posts.filter((post) => post.id !== id); // Cria uma nova lista sem o post excluído
+      const filteredPosts = posts.filter(
+        (post) => post.id.toString() !== id.toString()
+      ); // Cria uma nova lista sem o post excluído
 
       setPosts(filteredPosts); // Atualiza o estado e remove o post da tela
 
       setMessage("Post excluído com sucesso!"); // Mostra mensagem de sucesso
 
       setTimeout(() => {
-        setMessage(""); // Limpa a mensagem depois de 3 segundos
+        setMessage(""); // Limpa a mensagem depois de 5 segundos
       }, 5000);
     } catch (error) {
       console.log(error); // Mostra o erro no console caso a exclusão falhe
@@ -50,7 +52,8 @@ const Admin = () => {
   }, []);
 
   return (
-    <div className="admin"> {/* Container principal da página de administração */}
+    <div className="admin">
+      {/* Container principal da página de administração */}
       <h1>Gerenciar Posts</h1>
 
       {message && <p className="success-message">{message}</p>}
@@ -60,24 +63,36 @@ const Admin = () => {
       {posts.length === 0 ? (
         <p>Carregando...</p>
       ) : (
-        posts.map((post) => ( // Percorre a lista de posts e cria um bloco para cada post
-          <div className="post" key={post.id}> {/* key ajuda o React a identificar cada post da lista */}
-            <h2>{post.title}</h2> {/* Mostra o título do post */}
+        <div className="admin-grid">
+          {posts.map((post) => (
+            <div className="admin-card" key={post.id}>
+              {post.imageUrl && (
+                <img
+                  src={post.imageUrl}
+                  alt={post.title}
+                  className="admin-card-image"
+                />
+              )}
 
-            <div className="actions"> {/* Área dos botões de ação do post */}
-              <Link className="btn edit-btn" to={`/posts/edit/${post.id}`}>
-                Editar
-              </Link>
+              <div className="admin-card-content">
+                <h2>{post.title}</h2>
 
-              <button
-                className="btn delete-btn"
-                onClick={() => deletePost(post.id)}
-              >
-                Excluir
-              </button>
+                <div className="actions">
+                  <Link className="btn edit-btn" to={`/posts/edit/${post.id}`}>
+                    Editar
+                  </Link>
+
+                  <button
+                    className="btn delete-btn"
+                    onClick={() => deletePost(post.id)}
+                  >
+                    Excluir
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        ))
+          ))}
+        </div>
       )}
     </div>
   );

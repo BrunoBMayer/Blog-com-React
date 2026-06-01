@@ -1,27 +1,72 @@
-.new-post h2 {
-    text-align: center; 
-    margin-bottom: 1rem; /* espaço fora do elemento */
+.new-post {
+  max-width: 600px; /* Limita a largura da área do formulário */
+  width: 100%;
+
+  margin: 2rem auto; /* Centraliza a página na horizontal */
+  padding: 2rem;
+
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px var(--shadow-color);
+
+  display: flex; /* Organiza os elementos internos */
+  flex-direction: column; /* Coloca título e formulário um embaixo do outro */
+  align-items: stretch; /* Faz o formulário ocupar a largura disponível */
 }
 
-form {
-    max-width: 500px; 
-    width: 100%; 
-    margin: 0 auto; /* centraliza o formulário horizontalmente */
+.new-post h1,
+.new-post h2 {
+  text-align: center; /* Centraliza o título */
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.new-post form {
+  display: flex;
+  flex-direction: column; /* Coloca os campos um embaixo do outro */
+  gap: 1.2rem; /* Espaço entre os campos */
 }
 
 .form-control {
-  display: flex; /* faz a div controlar o alinhamento dos elementos dentro dela */
-  flex-direction: column; /* coloca label e input/textarea um embaixo do outro */
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column; /* Label em cima, input embaixo */
+  gap: 0.5rem;
 }
 
 .form-control label {
-    margin-bottom: 0.5rem; 
+  font-weight: bold;
+  color: var(--text-color);
 }
 
-.form-control input, 
+.form-control input,
 .form-control textarea {
-    padding: .5rem; /* adiciona espaço interno nos campos */
-    border-radius: 5px; 
-    border: none; 
+  width: 100%;
+
+  padding: 0.8rem 1rem;
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  background-color: var(--input-bg);
+  color: var(--input-text);
+
+  font-size: 1rem;
+  outline: none;
+}
+
+.form-control textarea {
+  min-height: 120px;
+  resize: vertical; /* Permite aumentar o textarea só na vertical */
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+  border-color: var(--text-color);
+}
+
+.new-post .btn {
+  align-self: flex-start; /* Deixa o botão alinhado à esquerda */
+  margin-top: 0.5rem;
 }
