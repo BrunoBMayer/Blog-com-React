@@ -1,39 +1,61 @@
-import blogFetch from "../axios/config"; 
-import { useEffect, useState } from "react"; // useEffect executa a busca quando a página carrega
-import { useParams } from "react-router-dom"; // pega parâmetros dinâmicos da URL, como o id do post
-import "./Post.css"; 
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import blogFetch from "../axios/config";
+import "./Post.css";
 
 const Post = () => {
-  const [post, setPost] = useState({}); // estado que começa como objeto vazio e depois guarda o post da API
+  const { id } = useParams(); // Pega o id que vem da URL, exemplo: /posts/1
 
-  const { id } = useParams(); // pega o id da URL. Ex: /posts/3 => id = 3
+  const [post, setPost] = useState(null); // Guarda o post específico
+  const [loading, setLoading] = useState(true); // Controla o carregamento da página
 
-  const getPost = async () => { // função assíncrona para buscar um post específico na API
+  const getPost = async () => {
     try {
+      const response = await blogFetch.get(`/posts/${id}`); // Busca o post pelo id
 
-      const response = await blogFetch.get(`/posts/${id}`); // faz GET em /posts/id usando o id da URL
-      const data = response.data; // pega os dados retornados pela API
-      setPost(data); // salva o post recebido no estado
-
+      setPost(response.data); // Salva o post no estado
     } catch (error) {
-      console.log(error); // mostra erro no console se a requisição falhar
+      console.log(error); // Mostra erro no console caso a requisição falhe
+    } finally {
+      setLoading(false); // Para o carregamento, dando certo ou errado
     }
   };
 
   useEffect(() => {
-    getPost(); // chama a função quando a página Post carregar
-  }, []); // array vazio faz o useEffect executar apenas uma vez
+    getPost(); // Busca o post quando a página carregar
+  }, [id]);
+
+  if (loading) {
+    return <p>Carregando post...</p>;
+  }
+
+  if (!post) {
+    return (
+      <div className="post-detail">
+        <h1>Post não encontrado</h1>
+
+        <Link to="/" className="btn">
+          Voltar para Home
+        </Link>
+      </div>
+    );
+  }
 
   return (
-    <div className="post-container"> 
-      {!post.title ? ( // se o post ainda não tiver title, significa que ainda está carregando
-        <p>Carregando...</p>
-      ) : (
-        <div className="post"> 
-          <h2>{post.title}</h2> 
-          <p>{post.body}</p> 
-        </div>
-      )}
+    <div className="post-detail">
+      <span className="post-category">Curiosidade</span>
+
+      <h1>{post.title}</h1>
+
+      <p className="post-meta">Publicado no Blog React</p>
+
+      <div className="post-content">
+        <p>{post.body}</p>
+      </div>
+
+      <Link to="/" className="btn">
+        Voltar para Home
+      </Link>
     </div>
   );
 };
