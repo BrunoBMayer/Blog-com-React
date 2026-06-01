@@ -1,11 +1,12 @@
 .not-found {
-  min-height: 70vh; /* vh significa viewport height, ou seja, a altura visível da tela do navegador. */
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 2rem;
+  color: var(--text-color);
 }
 
 .not-found h1 {
@@ -20,7 +21,7 @@
 }
 
 .not-found p {
-  color: #aaa;
+  color: var(--muted-text);
   margin-bottom: 2rem;
   max-width: 500px;
 }

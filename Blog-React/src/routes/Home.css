@@ -1,60 +1,67 @@
+.home {
+  color: var(--text-color);
+}
+
 .home h1 {
-    text-transform: uppercase; 
-    text-align: center; 
-    margin-bottom: 1.5rem; /* adiciona espaço abaixo do título */
-}
-
-.post {
-    display: flex; /* transforma o post em um container flex */
-    flex-direction: column; /* organiza os elementos do post em coluna */
-    margin-bottom: 1.5rem; /* espaço abaixo de cada post */
-    padding-bottom: 1.5rem; /* espaço interno na parte de baixo do post */
-    border-bottom: 1px solid #777; /* cria uma linha separando um post do outro */
-}
-
-.post h2, 
-.post p {
-    margin-bottom: 1rem; /* adiciona espaço abaixo do título e do parágrafo */
-}
-
-.post h2::first-letter {
-    text-transform: uppercase; 
-}
-
-.btn {
-    background-color: #fff; 
-    color: #0e1217; 
-    border: 1px solid #fff; /* borda branca no botão */
-    opacity: 1; 
-    padding: 0.5rem 1rem; /* espaço interno do botão */
-    border-radius: 1rem; 
-    max-width: 100px; 
-    text-align: center; 
-    cursor: pointer; 
-    transition: 0.3s; 
-}
-
-.btn:hover {  /*hover: aplica o estilo quando o mouse estiver em cima do elemento */
-    color: #fff; /* muda a cor do texto ao passar o mouse */
-    background-color: #0e1217; /* muda o fundo do botão ao passar o mouse */
+  color: var(--text-color);
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
 .search-container {
-    margin: 2rem 0; 
-    display: flex;
-    justify-content: center;
+  margin: 2rem 0 3rem;
+  display: flex;
+  justify-content: center;
 }
 
 .search-container input {
-    width: 100%;
-    max-width: 500px;
-    padding: 0.8rem 1rem;
-    border: 1px solid #ccc; 
-    border-radius: 8px;
-    font-size: 1rem; 
-    outline: none; 
+  width: 100%;
+  max-width: 500px;
+  padding: 0.8rem 1rem;
+
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  font-size: 1rem;
+  outline: none;
+
+  background-color: var(--input-bg);
+  color: var(--input-text);
 }
 
-.search-container input:focus {
-    border-color: #646cff;
+.post {
+  border-bottom: 1px solid var(--border-color);
+  padding: 2rem 0;
+}
+
+.post h2 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.post p {
+  color: var(--muted-text);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.btn {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+
+  font-weight: bold;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  opacity: 0.8;
 }

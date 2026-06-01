@@ -1,24 +1,61 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Distribui os itens dentro do container: o primeiro fica de um lado, o último do outro, e o espaço livre fica entre eles */
-    padding: 1rem 2rem;
-    background-color: #17191f;
+  background-color: var(--navbar-bg);
+  color: var(--text-color);
+  padding: 1rem 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .navbar h2 a {
-    opacity: 1;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-color);
+  opacity: 1;
 }
 
 .navbar ul {
-    display: flex;
-    gap: 1rem; 
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navbar ul li a {
+  color: var(--text-color);
+  font-weight: 500;
 }
 
 .new-btn {
-    font-weight: bold;
-    border: 1px solid #fff; 
-    padding: 0.5rem 1rem;
-    border-radius: 1rem; /* Arredonda os cantos do elemento */
-    opacity: 1;
+  border: 1px solid var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  opacity: 1;
+}
+
+.theme-btn {
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
+
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+
+  cursor: pointer;
+  font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+}
+
+.theme-btn:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
 }

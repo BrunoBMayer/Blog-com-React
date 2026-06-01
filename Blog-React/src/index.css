@@ -1,32 +1,71 @@
 * {
-    margin: 0; 
-    padding: 0; 
-    font-family: "Blinker";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Blinker", sans-serif;
 }
 
+/* Tema padrão: escuro */
 body {
-    background-color: #0e1217;
-    color: #FFF; 
+  --bg-color: #0e1217;
+  --navbar-bg: #151922;
+  --text-color: #ffffff;
+  --muted-text: #a9abb3;
+  --border-color: #2c313a;
+  --input-bg: #ffffff;
+  --input-text: #111111;
+  --button-bg: #ffffff;
+  --button-text: #111111;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Quando o tema escuro estiver ativo */
+body.dark {
+  --bg-color: #0e1217;
+  --navbar-bg: #151922;
+  --text-color: #ffffff;
+  --muted-text: #a9abb3;
+  --border-color: #2c313a;
+  --input-bg: #ffffff;
+  --input-text: #111111;
+  --button-bg: #ffffff;
+  --button-text: #111111;
+}
+
+/* Quando o tema claro estiver ativo */
+body.light {
+  --bg-color: #f4f4f5;
+  --navbar-bg: #ffffff;
+  --text-color: #111111;
+  --muted-text: #555555;
+  --border-color: #d4d4d8;
+  --input-bg: #ffffff;
+  --input-text: #111111;
+  --button-bg: #111111;
+  --button-text: #ffffff;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
-    color: #FFF;
-    opacity: 0.7;
-    transition: 0.3s;
+  text-decoration: none;
+  color: var(--text-color);
+  opacity: 0.7;
+  transition: 0.3s;
 }
 
 /* Quando o mouse passar por cima de um link,
    a opacidade dele vira 1, ou seja,
    ele fica totalmente visível */
 a:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 p {
-    color: #a9abb3; 
+  color: var(--muted-text);
 }

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
-const Navbar = () => {
+const Navbar = ({ theme, toggleTheme }) => {
   return (
     <nav className="navbar">
       <h2>
@@ -20,9 +20,14 @@ const Navbar = () => {
         </li>
 
         <li>
-          <Link to="/admin">
-            Gerenciar
-          </Link>
+          <Link to="/admin">Gerenciar</Link>
+        </li>
+
+        <li>
+          {/* Botão de trocar tema */}
+          <button className="theme-btn" onClick={toggleTheme}>
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
         </li>
       </ul>
     </nav>
