@@ -30,17 +30,38 @@
   color: var(--input-text);
 }
 
-.post {
-  border-bottom: 1px solid var(--border-color);
-  padding: 2rem 0;
+.search-container input:focus {
+  border-color: var(--text-color);
 }
 
-.post h2 {
+/* Card de cada post da Home */
+.home .post {
+  background-color: var(--card-bg);
+
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  box-shadow: 0 4px 12px var(--shadow-color);
+
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+
+/* Efeito quando passa o mouse em cima do card */
+.home .post:hover {
+  transform: translateY(-4px);
+  background-color: var(--card-hover);
+  box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.home .post h2 {
   color: var(--text-color);
   margin-bottom: 1rem;
 }
 
-.post p {
+.home .post p {
   color: var(--muted-text);
   margin-bottom: 1.5rem;
   line-height: 1.5;
