@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import blogFetch from "../axios/config";
+import { postSchema } from "../schemas/postSchema";
 import "./NewPost.css";
 
 const NewPost = () => {
@@ -11,18 +12,28 @@ const NewPost = () => {
   const [imageUrl, setImageUrl] = useState(""); // Guarda a URL da imagem do post
 
   const createPost = async (e) => {
-    e.preventDefault(); // Evita o recarregamento da página ao enviar o formulário
+    e.preventDefault();
 
-    const post = {
+    const validation = postSchema.safeParse({
       title,
       body,
       imageUrl,
+    });
+
+    if (!validation.success) {
+      alert(validation.error.issues[0].message);
+      return;
+    }
+
+    const post = {
+      ...validation.data,
+      userId: 1,
     };
 
     try {
-      await blogFetch.post("/posts", post); // Envia o novo post para o JSON Server
+      await blogFetch.post("/posts", post);
 
-      navigate("/"); // Redireciona para a Home depois de criar o post
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

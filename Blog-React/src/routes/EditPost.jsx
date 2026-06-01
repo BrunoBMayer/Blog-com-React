@@ -1,6 +1,7 @@
 import blogFetch from "../axios/config";
 import { useEffect, useState } from "react"; // useEffect executa a busca quando a página carrega
 import { useParams, useNavigate } from "react-router-dom"; // pega parâmetros dinâmicos da URL, como o id do post
+import { postSchema } from "../schemas/postSchema"; // importa as regras de validação do post
 import "./EditPost.css";
 
 const EditPost = () => {
@@ -29,15 +30,22 @@ const EditPost = () => {
   const editPost = async (e) => {
     e.preventDefault();
 
-    if (!title.trim() || !body.trim()) {
-      alert("Preencha o título e o conteúdo do post.");
-      return;
-    }
-
-    const post = {
+    // Valida os dados do formulário usando o schema do Zod
+    const validation = postSchema.safeParse({
       title,
       body,
       imageUrl,
+    });
+
+    // Se algum campo não seguir as regras do schema, mostra a mensagem de erro
+    if (!validation.success) {
+      alert(validation.error.issues[0].message);
+      return;
+    }
+
+    // Usa os dados já validados e tratados pelo Zod
+    const post = {
+      ...validation.data,
       userId: 1,
     };
 

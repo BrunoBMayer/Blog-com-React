@@ -4,91 +4,98 @@
       "id": "1",
       "title": "Brasil",
       "body": "O Brasil é o maior país da América do Sul e possui a maior floresta tropical do mundo, a Amazônia. Uma curiosidade é que o Brasil é o único país da América Latina onde o idioma oficial é o português.",
-      "imageUrl": "https://loremflickr.com/1200/700/christ+the+redeemer,rio+de+janeiro"
+      "imageUrl": "https://loremflickr.com/1200/700/christ+redeemer,rio+de+janeiro?lock=101"
     },
     {
       "id": "2",
       "title": "Japão",
       "body": "O Japão é conhecido por sua tecnologia, cultura tradicional e cidades muito organizadas. Uma curiosidade é que o país possui milhares de ilhas, sendo Honshu, Hokkaido, Kyushu e Shikoku as principais.",
-      "imageUrl": "https://loremflickr.com/1200/700/mount+fuji,japan"
+      "imageUrl": "https://americachip.com/wp-content/uploads/2024/02/monte-fuji-onde-fica.jpg"
     },
     {
       "id": "3",
       "title": "Canadá",
       "body": "O Canadá é o segundo maior país do mundo em extensão territorial. Uma curiosidade é que ele possui mais lagos do que qualquer outro país, concentrando uma grande parte da água doce do planeta.",
-      "imageUrl": "https://loremflickr.com/1200/700/moraine+lake,canada"
+      "imageUrl": "https://loremflickr.com/1200/700/moraine+lake,canada?lock=103"
     },
     {
       "id": "4",
       "title": "Itália",
       "body": "A Itália é famosa por sua história, culinária e arte. Uma curiosidade é que o país abriga o Vaticano, o menor Estado independente do mundo, localizado dentro da cidade de Roma.",
-      "imageUrl": "https://loremflickr.com/1200/700/colosseum,rome"
+      "imageUrl": "https://loremflickr.com/1200/700/colosseum,rome,italy?lock=104"
     },
     {
       "id": "5",
       "title": "Egito",
       "body": "O Egito é conhecido por suas pirâmides, templos antigos e pela civilização às margens do rio Nilo. Uma curiosidade é que a Grande Pirâmide de Gizé foi uma das construções mais altas do mundo por milhares de anos.",
-      "imageUrl": "https://loremflickr.com/1200/700/pyramids+of+giza,egypt"
+      "imageUrl": "https://loremflickr.com/1200/700/pyramids+of+giza,egypt?lock=105"
     },
     {
       "id": "6",
       "title": "Austrália",
       "body": "A Austrália é um país e também um continente, conhecido por sua fauna única. Uma curiosidade é que existem mais cangurus do que pessoas no país.",
-      "imageUrl": "https://loremflickr.com/1200/700/sydney+opera+house,australia"
+      "imageUrl": "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=1200&q=80"
     },
     {
       "id": "7",
       "title": "França",
       "body": "A França é muito conhecida por sua cultura, gastronomia, moda e pontos turísticos. Uma curiosidade é que a Torre Eiffel inicialmente foi criticada por muitos artistas e intelectuais franceses antes de se tornar um símbolo mundial.",
-      "imageUrl": "https://loremflickr.com/1200/700/eiffel+tower,paris"
+      "imageUrl": "https://loremflickr.com/1200/700/eiffel+tower,paris,france?lock=107"
     },
     {
       "id": "8",
       "title": "Índia",
       "body": "A Índia é um dos países mais populosos do mundo e possui grande diversidade cultural, religiosa e linguística. Uma curiosidade é que o país tem centenas de idiomas e dialetos falados em diferentes regiões.",
-      "imageUrl": "https://loremflickr.com/1200/700/taj+mahal,india"
+      "imageUrl": "https://loremflickr.com/1200/700/taj+mahal,india?lock=108"
     },
     {
       "id": "9",
       "title": "México",
       "body": "O México é conhecido por sua culinária, festas tradicionais e sítios arqueológicos. Uma curiosidade é que o chocolate tem origem nas antigas civilizações mesoamericanas, como os maias e astecas.",
-      "imageUrl": "https://loremflickr.com/1200/700/chichen+itza,mexico"
+      "imageUrl": "https://loremflickr.com/1200/700/chichen+itza,mexico?lock=109"
     },
     {
       "id": "10",
       "title": "Noruega",
       "body": "A Noruega é famosa por seus fiordes, paisagens naturais e qualidade de vida. Uma curiosidade é que em algumas regiões do país ocorre o sol da meia-noite, quando o sol permanece visível durante 24 horas no verão.",
-      "imageUrl": "https://loremflickr.com/1200/700/geirangerfjord,norway"
+      "imageUrl": "https://loremflickr.com/1200/700/fjord,norway?lock=110"
     },
     {
       "id": "11",
       "title": "África do Sul",
       "body": "A África do Sul é conhecida por sua diversidade cultural e natural. Uma curiosidade é que o país possui três capitais: Pretória, Cidade do Cabo e Bloemfontein.",
-      "imageUrl": "https://loremflickr.com/1200/700/table+mountain,cape+town"
+      "imageUrl": "https://loremflickr.com/1200/700/table+mountain,cape+town,south+africa?lock=111"
     },
     {
       "id": "12",
       "title": "China",
       "body": "A China é um dos países mais antigos do mundo e possui uma das maiores populações do planeta. Uma curiosidade é que a Grande Muralha da China tem milhares de quilômetros de extensão.",
-      "imageUrl": "https://loremflickr.com/1200/700/great+wall+of+china"
+      "imageUrl": "https://loremflickr.com/1200/700/great+wall+of+china?lock=112"
     },
     {
       "id": "13",
       "title": "Grécia",
       "body": "A Grécia é considerada um dos berços da civilização ocidental, da filosofia e da democracia. Uma curiosidade é que o país possui milhares de ilhas, mas apenas uma parte delas é habitada.",
-      "imageUrl": "https://loremflickr.com/1200/700/parthenon,athens"
+      "imageUrl": "https://loremflickr.com/1200/700/santorini,greece?lock=113"
     },
     {
       "id": "14",
       "title": "Argentina",
       "body": "A Argentina é conhecida pelo tango, futebol e pelas paisagens da Patagônia. Uma curiosidade é que o país abriga o Aconcágua, a montanha mais alta das Américas.",
-      "imageUrl": "https://loremflickr.com/1200/700/perito+moreno+glacier,argentina"
+      "imageUrl": "https://loremflickr.com/1200/700/patagonia,argentina?lock=114"
     },
     {
       "id": "15",
       "title": "Islândia",
       "body": "A Islândia é famosa por vulcões, geleiras, fontes termais e paisagens naturais impressionantes. Uma curiosidade é que o país praticamente não possui mosquitos.",
-      "imageUrl": "https://loremflickr.com/1200/700/kirkjufell,iceland"
+      "imageUrl": "https://loremflickr.com/1200/700/iceland,waterfall?lock=115"
+    },
+    {
+      "title": "Tuvalu",
+      "body": "Tuvalu é um pequeno país insular localizado no Oceano Pacífico, formado por atóis e ilhas de baixa altitude. Uma curiosidade é que ele é um dos menores países do mundo em população e território, além de ser muito vulnerável à elevação do nível do mar.",
+      "imageUrl": "https://mega.ibxk.com.br/2023/01/17/17193542716424.jpg",
+      "id": "3nNwvlt3h5E"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
