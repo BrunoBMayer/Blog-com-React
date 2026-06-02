@@ -1,19 +1,23 @@
+/* Estiliza a página de administração */
 .admin {
   color: var(--text-color);
 }
 
+/* Estiliza o título da página de administração */
 .admin h1 {
   color: var(--text-color);
   text-align: center;
   margin-bottom: 2rem;
 }
 
+/* Organiza os cards dos posts em duas colunas */
 .admin-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 
+/* Estiliza o card de cada post na área administrativa */
 .admin-card {
   background-color: var(--card-bg);
 
@@ -27,12 +31,14 @@
   transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
+/* Aplica efeito visual quando o mouse passa em cima do card */
 .admin-card:hover {
   transform: translateY(-4px);
   background-color: var(--card-hover);
   box-shadow: 0 8px 20px var(--shadow-color);
 }
 
+/* Estiliza a imagem do post dentro do card administrativo */
 .admin-card-image {
   width: 100%;
   height: 180px;
@@ -42,58 +48,44 @@
   border-bottom: 1px solid var(--border-color);
 }
 
+/* Estiliza a área de conteúdo do card */
 .admin-card-content {
   padding: 1.5rem;
 }
 
+/* Estiliza o título do post dentro do card */
 .admin-card h2 {
   color: var(--text-color);
   margin-bottom: 1.2rem;
 }
 
+/* Organiza os botões de ação do card */
 .actions {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
 }
 
+/* Estiliza o botão de editar */
 .edit-btn {
   background-color: #0dcaf0;
   color: #ffffff;
 }
 
+/* Estiliza o botão de excluir */
 .delete-btn {
   background-color: #dc3545;
   color: #ffffff;
 }
 
-.success-message {
-  position: fixed;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-
-  padding: 1rem 1.5rem;
-  border-radius: 8px;
-  font-weight: bold;
-  text-align: center;
-
-  min-width: 280px;
-  max-width: 500px;
-
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
+/* Ajusta a página administrativa para telas menores */
 @media (max-width: 768px) {
+  /* Em telas menores, exibe os cards em uma coluna */
   .admin-grid {
     grid-template-columns: 1fr;
   }
 
+  /* Aumenta um pouco a altura da imagem no layout mobile */
   .admin-card-image {
     height: 200px;
   }

@@ -1,67 +1,72 @@
-import { useState, useEffect } from "react";
-import blogFetch from "../axios/config";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import blogFetch from "../axios/config";
 import "./Admin.css";
 
 const Admin = () => {
-  const [posts, setPosts] = useState([]); // Estado que guarda a lista de posts da API
-  const [message, setMessage] = useState(""); // Guarda o texto da mensagem de sucesso
+  const [posts, setPosts] = useState([]); // Guarda a lista de posts recebida da API
+  const [loading, setLoading] = useState(true); // Controla se os posts ainda estão carregando
 
-  const getPosts = async () => {
-    try {
-      const response = await blogFetch.get("/posts"); // Busca todos os posts da API
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        // Busca todos os posts da API
+        const response = await blogFetch.get("/posts");
 
-      const data = response.data; // Pega os dados retornados pela API
+        // Atualiza o estado com os posts recebidos da API
+        setPosts(response.data);
+      } catch (error) {
+        // Mostra o erro no console caso a requisição falhe
+        console.log(error);
+      } finally {
+        // Finaliza o carregamento, independentemente de ter dado certo ou erro
+        setLoading(false);
+      }
+    };
 
-      setPosts(data); // Salva os posts no estado
-    } catch (error) {
-      console.log(error); // Mostra o erro no console caso a requisição falhe
-    }
-  };
+    getPosts();
+  }, []);
 
   const deletePost = async (id) => {
+    // Exibe uma confirmação antes de excluir o post
     const confirmDelete = window.confirm(
       "Tem certeza que deseja excluir este post?"
-    ); // Confirmação antes de excluir
+    );
 
+    // Se o usuário cancelar, a função para aqui
     if (!confirmDelete) {
       return;
     }
 
     try {
-      await blogFetch.delete(`/posts/${id}`); // Envia uma requisição DELETE para excluir o post na API
+      // Envia uma requisição DELETE para excluir o post na API
+      await blogFetch.delete(`/posts/${id}`);
 
-      const filteredPosts = posts.filter(
-        (post) => post.id.toString() !== id.toString()
-      ); // Cria uma nova lista sem o post excluído
+      // Atualiza a lista de posts, removendo da tela o post excluído
+      setPosts((prevPosts) =>
+        prevPosts.filter((post) => post.id.toString() !== id.toString())
+      );
 
-      setPosts(filteredPosts); // Atualiza o estado e remove o post da tela
-
-      setMessage("Post excluído com sucesso!"); // Mostra mensagem de sucesso
-
-      setTimeout(() => {
-        setMessage(""); // Limpa a mensagem depois de 5 segundos
-      }, 5000);
+      // Exibe mensagem de sucesso usando toast
+      toast.success("Post excluído com sucesso!");
     } catch (error) {
-      console.log(error); // Mostra o erro no console caso a exclusão falhe
+      // Mostra o erro no console caso a exclusão falhe
+      console.log(error);
+
+      // Exibe mensagem de erro para o usuário
+      toast.error("Não foi possível excluir o post.");
     }
   };
 
-  useEffect(() => {
-    getPosts(); // Chama a função quando a página Admin carregar
-  }, []);
-
   return (
     <div className="admin">
-      {/* Container principal da página de administração */}
       <h1>Gerenciar Posts</h1>
 
-      {message && <p className="success-message">{message}</p>}
-
-      {/* Se a lista de posts ainda estiver vazia, mostra "Carregando...".
-          Quando os posts chegarem, renderiza a lista com map */}
-      {posts.length === 0 ? (
+      {loading ? (
         <p>Carregando...</p>
+      ) : posts.length === 0 ? (
+        <p>Nenhum post cadastrado.</p>
       ) : (
         <div className="admin-grid">
           {posts.map((post) => (
@@ -83,6 +88,7 @@ const Admin = () => {
                   </Link>
 
                   <button
+                    type="button"
                     className="btn delete-btn"
                     onClick={() => deletePost(post.id)}
                   >
@@ -99,3 +105,8 @@ const Admin = () => {
 };
 
 export default Admin;
+
+// O Admin.jsx é a página de gerenciamento dos posts. Ele busca todos os posts da API,
+//  mostra cada um em formato de card e permite editar ou excluir posts. A edição leva 
+// para a rota /posts/edit/:id, e a exclusão faz uma requisição DELETE para a API, 
+// atualizando a lista na tela logo depois.

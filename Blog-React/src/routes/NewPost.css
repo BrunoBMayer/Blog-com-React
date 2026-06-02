@@ -1,8 +1,9 @@
+/* Estiliza o card principal da página de criação de post */
 .new-post {
-  max-width: 600px; /* Limita a largura da área do formulário */
+  max-width: 600px;
   width: 100%;
 
-  margin: 2rem auto; /* Centraliza a página na horizontal */
+  margin: 2rem auto;
   padding: 2rem;
 
   background-color: var(--card-bg);
@@ -11,35 +12,39 @@
 
   box-shadow: 0 4px 12px var(--shadow-color);
 
-  display: flex; /* Organiza os elementos internos */
-  flex-direction: column; /* Coloca título e formulário um embaixo do outro */
-  align-items: stretch; /* Faz o formulário ocupar a largura disponível */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 }
 
-.new-post h1,
-.new-post h2 {
-  text-align: center; /* Centraliza o título */
+/* Estiliza o título da página de criação */
+.new-post h1 {
+  text-align: center;
   margin-bottom: 2rem;
   color: var(--text-color);
 }
 
+/* Estiliza o formulário de criação do post */
 .new-post form {
   display: flex;
-  flex-direction: column; /* Coloca os campos um embaixo do outro */
-  gap: 1.2rem; /* Espaço entre os campos */
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
+/* Estiliza cada grupo do formulário, juntando label e campo */
 .form-control {
   display: flex;
-  flex-direction: column; /* Label em cima, input embaixo */
+  flex-direction: column;
   gap: 0.5rem;
 }
 
+/* Estiliza os labels dos campos */
 .form-control label {
   font-weight: bold;
   color: var(--text-color);
 }
 
+/* Estiliza os campos de input e textarea */
 .form-control input,
 .form-control textarea {
   width: 100%;
@@ -56,17 +61,20 @@
   outline: none;
 }
 
+/* Estiliza especificamente o campo de conteúdo do post */
 .form-control textarea {
   min-height: 120px;
-  resize: vertical; /* Permite aumentar o textarea só na vertical */
+  resize: vertical;
 }
 
+/* Destaca o campo quando ele está selecionado */
 .form-control input:focus,
 .form-control textarea:focus {
   border-color: var(--text-color);
 }
 
+/* Estiliza o botão de envio do formulário */
 .new-post .btn {
-  align-self: flex-start; /* Deixa o botão alinhado à esquerda */
+  align-self: flex-start;
   margin-top: 0.5rem;
 }

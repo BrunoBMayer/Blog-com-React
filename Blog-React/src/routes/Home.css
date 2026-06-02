@@ -1,7 +1,9 @@
+/* Estiliza a página inicial */
 .home {
   color: var(--text-color);
 }
 
+/* Estiliza o título principal da Home */
 .home h1 {
   color: var(--text-color);
   text-align: center;
@@ -9,12 +11,14 @@
   margin-bottom: 2rem;
 }
 
+/* Estiliza a área da barra de pesquisa */
 .search-container {
   margin: 2rem 0 3rem;
   display: flex;
   justify-content: center;
 }
 
+/* Estiliza o campo de pesquisa */
 .search-container input {
   width: 100%;
   max-width: 500px;
@@ -30,11 +34,12 @@
   color: var(--input-text);
 }
 
+/* Destaca o campo de pesquisa quando ele está selecionado */
 .search-container input:focus {
   border-color: var(--text-color);
 }
 
-/* Card de cada post da Home */
+/* Estiliza o card de cada post da Home */
 .home .post {
   background-color: var(--card-bg);
 
@@ -49,24 +54,27 @@
   transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
-/* Efeito quando passa o mouse em cima do card */
+/* Aplica efeito visual quando o mouse passa em cima do card */
 .home .post:hover {
   transform: translateY(-4px);
   background-color: var(--card-hover);
   box-shadow: 0 8px 20px var(--shadow-color);
 }
 
+/* Estiliza o título de cada post */
 .home .post h2 {
   color: var(--text-color);
   margin-bottom: 1rem;
 }
 
+/* Estiliza o resumo/conteúdo de cada post */
 .home .post p {
   color: var(--muted-text);
   margin-bottom: 1.5rem;
   line-height: 1.5;
 }
 
+/* Estiliza botões e links com aparência de botão */
 .btn {
   background-color: var(--button-bg);
   color: var(--button-text);
@@ -83,10 +91,12 @@
   transition: 0.3s;
 }
 
+/* Aplica efeito visual quando o mouse passa sobre o botão */
 .btn:hover {
   opacity: 0.8;
 }
 
+/* Estiliza a imagem de cada post */
 .post-image {
   width: 100%;
   height: 220px;
@@ -99,12 +109,14 @@
   border: 1px solid var(--border-color);
 }
 
+/* Organiza os posts em duas colunas */
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
 }
 
+/* Ajusta a lista de posts para uma coluna em telas menores */
 @media (max-width: 768px) {
   .posts-grid {
     grid-template-columns: 1fr;
