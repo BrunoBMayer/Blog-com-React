@@ -1,4 +1,3 @@
-/* Estiliza a área principal do rodapé */
 .footer {
   background-color: var(--navbar-bg);
   color: var(--text-color);
@@ -11,13 +10,11 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Estiliza os parágrafos dentro do rodapé */
 .footer p {
   color: var(--muted-text);
   margin-bottom: 0.5rem;
 }
 
-/* Estiliza o texto com as tecnologias usadas no projeto */
 .footer-techs {
   font-size: 0.9rem;
   opacity: 0.8;

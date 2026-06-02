@@ -1,4 +1,3 @@
-/* Estiliza o card principal da página de criação de post */
 .new-post {
   max-width: 600px;
   width: 100%;
@@ -17,34 +16,29 @@
   align-items: stretch;
 }
 
-/* Estiliza o título da página de criação */
 .new-post h1 {
   text-align: center;
   margin-bottom: 2rem;
   color: var(--text-color);
 }
 
-/* Estiliza o formulário de criação do post */
 .new-post form {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-/* Estiliza cada grupo do formulário, juntando label e campo */
 .form-control {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-/* Estiliza os labels dos campos */
 .form-control label {
   font-weight: bold;
   color: var(--text-color);
 }
 
-/* Estiliza os campos de input e textarea */
 .form-control input,
 .form-control textarea {
   width: 100%;
@@ -61,19 +55,16 @@
   outline: none;
 }
 
-/* Estiliza especificamente o campo de conteúdo do post */
 .form-control textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-/* Destaca o campo quando ele está selecionado */
 .form-control input:focus,
 .form-control textarea:focus {
   border-color: var(--text-color);
 }
 
-/* Estiliza o botão de envio do formulário */
 .new-post .btn {
   align-self: flex-start;
   margin-top: 0.5rem;

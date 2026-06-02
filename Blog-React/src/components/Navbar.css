@@ -60,46 +60,30 @@
   transform: scale(1.05);
 }
 
-/* Responsividade da Navbar para telas menores */
 @media (max-width: 600px) {
   .navbar {
-    /* No celular, a navbar vira uma coluna */
     flex-direction: column;
-
-    /* Centraliza o logo e os links */
     align-items: center;
-
-    /* Dá um espaço entre o logo e os links */
     gap: 1rem;
-
-    /* Reduz um pouco o padding lateral */
     padding: 1rem;
   }
 
   .navbar ul {
-    /* Mantém os links em linha, mas permite quebrar se faltar espaço */
     flex-wrap: wrap;
-
-    /* Centraliza os links */
     justify-content: center;
-
-    /* Diminui o espaço entre eles */
     gap: 0.8rem;
   }
 
   .navbar ul li a {
-    /* Diminui um pouco o tamanho dos links no celular */
     font-size: 0.9rem;
   }
 
   .new-btn {
-    /* Reduz o tamanho do botão Novo Post no celular */
     padding: 0.4rem 0.8rem;
     border-radius: 16px;
   }
 
   .theme-btn {
-    /* Reduz o botão de tema no celular */
     width: 34px;
     height: 34px;
     font-size: 0.9rem;

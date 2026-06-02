@@ -24,7 +24,6 @@ const Navbar = ({ theme, toggleTheme }) => {
         </li>
 
         <li>
-          {/* Botão que chama a função responsável por alternar entre tema escuro e claro */}
           <button
             type="button"
             className="theme-btn"

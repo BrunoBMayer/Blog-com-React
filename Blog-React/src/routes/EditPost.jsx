@@ -6,29 +6,25 @@ import { postSchema } from "../schemas/postSchema";
 import "./EditPost.css";
 
 const EditPost = () => {
-  const navigate = useNavigate(); // Permite redirecionar o usuário para outra rota pelo código
-  const { id } = useParams(); // Pega o id que vem da URL, exemplo: /posts/edit/1
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  const [title, setTitle] = useState(""); // Guarda o título do post
-  const [body, setBody] = useState(""); // Guarda o conteúdo do post
-  const [imageUrl, setImageUrl] = useState(""); // Guarda a URL da imagem do post
-  const [loading, setLoading] = useState(true); // Controla o carregamento dos dados do post
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getPost = async () => {
       try {
-        // Busca na API o post correspondente ao id que veio da URL
         const response = await blogFetch.get(`/posts/${id}`);
 
-        // Preenche os campos do formulário com os dados recebidos da API
         setTitle(response.data.title);
         setBody(response.data.body);
         setImageUrl(response.data.imageUrl || "");
       } catch (error) {
-        // Mostra o erro no console caso a requisição falhe
         console.log(error);
       } finally {
-        // Finaliza o carregamento, independentemente de ter dado certo ou erro
         setLoading(false);
       }
     };
@@ -37,36 +33,29 @@ const EditPost = () => {
   }, [id]);
 
   const editPost = async (e) => {
-    // Impede o comportamento padrão do formulário, que seria recarregar a página
     e.preventDefault();
 
-    // Valida os dados do formulário usando o schema criado com Zod
     const validation = postSchema.safeParse({
       title,
       body,
       imageUrl,
     });
 
-    // Se a validação falhar, exibe a primeira mensagem de erro e interrompe a edição
     if (!validation.success) {
       toast.error(validation.error.issues[0].message);
       return;
     }
 
-    // Cria o objeto do post atualizado usando os dados já validados
     const post = {
       ...validation.data,
       userId: 1,
     };
 
     try {
-      // Atualiza o post na API
       await blogFetch.put(`/posts/${id}`, post);
 
-      // Após editar, redireciona o usuário para a página de detalhes do post
       navigate(`/posts/${id}`);
     } catch (error) {
-      // Mostra o erro no console caso a requisição falhe
       console.log(error);
     }
   };
@@ -125,8 +114,3 @@ const EditPost = () => {
 };
 
 export default EditPost;
-
-// O EditPost.jsx é a página responsável por editar um post existente. Ele pega o id da URL com useParams,
-//  busca os dados atuais do post na API, preenche o formulário com esses dados e permite alterar 
-// título, conteúdo e imagem. Ao enviar, ele valida os dados com o postSchema, atualiza o post
-//  usando blogFetch.put e redireciona para a página de detalhes do post editado.

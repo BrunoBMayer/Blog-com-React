@@ -1,4 +1,3 @@
-/* Aplica regras gerais em todos os elementos da aplicação */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +5,6 @@
   font-family: "Blinker", sans-serif;
 }
 
-/* Define o tema padrão da aplicação como escuro */
 body,
 body.dark {
   --bg-color: #0e1217;
@@ -27,7 +25,6 @@ body.dark {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Define as variáveis de cor quando o tema claro está ativo */
 body.light {
   --bg-color: #f4f4f5;
   --navbar-bg: #ffffff;
@@ -43,12 +40,10 @@ body.light {
   --shadow-color: rgba(0, 0, 0, 0.12);
 }
 
-/* Remove os marcadores padrão das listas */
 ul {
   list-style: none;
 }
 
-/* Estiliza os links da aplicação */
 a {
   text-decoration: none;
   color: var(--text-color);
@@ -56,14 +51,10 @@ a {
   transition: 0.3s;
 }
 
-/* Estiliza o link quando o mouse passa por cima */
 a:hover {
   opacity: 1;
 }
 
-/* Define uma cor mais suave para os parágrafos */
 p {
   color: var(--muted-text);
 }
-
-/* -- no CSS é usado para criar variáveis */
