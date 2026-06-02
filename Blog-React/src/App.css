@@ -1,8 +1,8 @@
+/* Estiliza o container principal da aplicação */
 .App {
-  min-height: 100vh; /* Faz o app ocupar no mínimo toda a altura da tela */
-
-  display: flex; /* Ativa o Flexbox */
-  flex-direction: column; /* Organiza Navbar, conteúdo e Footer em coluna */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -10,16 +10,7 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.container {
-  max-width: 1000px; /* Limita a largura máxima do conteúdo */
-  width: 100%; /* Permite que o container ocupe a largura disponível em telas menores */
-
-  margin: 2rem auto; /* 2rem em cima/baixo e centraliza nas laterais */
-  padding: 0 2rem;
-
-  flex: 1; /* Faz o conteúdo ocupar o espaço disponível e empurra o footer para baixo */
-}
-
+/* Estiliza a área principal onde as páginas são exibidas */
 .container {
   max-width: 1200px;
   width: 100%;
@@ -29,3 +20,8 @@
 
   flex: 1;
 }
+
+/* Esse arquivo estiliza a estrutura principal da aplicação. A classe .App faz o site ocupar
+ pelo menos a altura total da tela e organiza os elementos principais em coluna: Navbar, conteúdo e Footer.
+  Já a classe .container limita a largura do conteúdo, centraliza a área principal e usa flex: 1 
+  para empurrar o footer para o final da tela quando houver pouco conteúdo.*/

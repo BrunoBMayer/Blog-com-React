@@ -24,8 +24,13 @@ const Navbar = ({ theme, toggleTheme }) => {
         </li>
 
         <li>
-          {/* Botão de trocar tema */}
-          <button className="theme-btn" onClick={toggleTheme}>
+          {/* Botão que chama a função responsável por alternar entre tema escuro e claro */}
+          <button
+            type="button"
+            className="theme-btn"
+            onClick={toggleTheme}
+            aria-label="Alternar tema"
+          >
             {theme === "dark" ? "☀️" : "🌙"}
           </button>
         </li>

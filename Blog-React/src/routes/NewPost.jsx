@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import blogFetch from "../axios/config";
 import { postSchema } from "../schemas/postSchema";
+import { toast } from "react-toastify";
 import "./NewPost.css";
 
 const NewPost = () => {
@@ -21,7 +22,7 @@ const NewPost = () => {
     });
 
     if (!validation.success) {
-      alert(validation.error.issues[0].message);
+      toast.error(validation.error.issues[0].message);
       return;
     }
 
