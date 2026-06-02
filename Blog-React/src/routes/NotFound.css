@@ -1,3 +1,4 @@
+/* Estiliza a página de erro 404 */
 .not-found {
   min-height: 70vh;
   display: flex;
@@ -9,17 +10,20 @@
   color: var(--text-color);
 }
 
+/* Estiliza o número 404 */
 .not-found h1 {
   font-size: 6rem;
   margin-bottom: 1rem;
   color: #646cff;
 }
 
+/* Estiliza o título da mensagem de erro */
 .not-found h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
+/* Estiliza o texto explicativo da página não encontrada */
 .not-found p {
   color: var(--muted-text);
   margin-bottom: 2rem;

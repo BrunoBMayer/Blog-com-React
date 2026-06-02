@@ -6,23 +6,27 @@ import "./Post.css";
 const Post = () => {
   const { id } = useParams(); // Pega o id que vem da URL, exemplo: /posts/1
 
-  const [post, setPost] = useState(null); // Guarda o post específico
-  const [loading, setLoading] = useState(true); // Controla o carregamento da página
-
-  const getPost = async () => {
-    try {
-      const response = await blogFetch.get(`/posts/${id}`); // Busca o post pelo id
-
-      setPost(response.data); // Salva o post no estado
-    } catch (error) {
-      console.log(error); // Mostra erro no console caso a requisição falhe
-    } finally {
-      setLoading(false); // Para o carregamento, dando certo ou errado
-    }
-  };
+  const [post, setPost] = useState(null); // Guarda os dados do post específico
+  const [loading, setLoading] = useState(true); // Controla se a página ainda está carregando
 
   useEffect(() => {
-    getPost(); // Busca o post quando a página carregar
+    const getPost = async () => { 
+      try {
+        // Busca na API o post correspondente ao id que veio da URL
+        const response = await blogFetch.get(`/posts/${id}`);
+
+        // Salva os dados do post no estado
+        setPost(response.data);
+      } catch (error) {
+        // Mostra o erro no console caso a requisição falhe
+        console.log(error);
+      } finally {
+        // Finaliza o carregamento, independentemente de ter dado certo ou erro
+        setLoading(false);
+      }
+    };
+
+    getPost();
   }, [id]);
 
   if (loading) {
@@ -50,7 +54,11 @@ const Post = () => {
       <p className="post-meta">Publicado no Blog React</p>
 
       {post.imageUrl && (
-        <img src={post.imageUrl} alt={post.title} className="post-detail-image" />
+        <img
+          src={post.imageUrl}
+          alt={post.title}
+          className="post-detail-image"
+        />
       )}
 
       <div className="post-content">
@@ -65,3 +73,11 @@ const Post = () => {
 };
 
 export default Post;
+
+// A função getPost é assíncrona porque faz uma requisição para a API. Como essa resposta não chega
+// instantaneamente, usamos async na função e await na requisição para esperar os dados antes de 
+// continuar o código.
+
+//O Post.jsx é a página de detalhes de um post. Ele pega o id da URL usando useParams, 
+//faz uma requisição para buscar aquele post específico na API e exibe título, conteúdo e imagem,
+//caso exista. Ele também trata o estado de carregamento e mostra uma mensagem caso o post não seja encontrado.
